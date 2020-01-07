@@ -60,7 +60,8 @@ func (h handlers) callback(c *gin.Context) {
 	}
 	query := u.Query()
 	query.Set("state", state)
-	query.Set("state", code)
+	query.Set("code", code)
+	u.RawQuery = query.Encode()
 
 	c.Redirect(http.StatusFound, u.String())
 }
